@@ -1,7 +1,20 @@
+# == Schema Information
+#
+# Table name: users
+#
+#  id              :integer          not null, primary key
+#  username        :string
+#  email           :string
+#  password_digest :string
+#  created_at      :datetime         not null
+#  updated_at      :datetime         not null
+#
+
 class User < ApplicationRecord
 	has_secure_password
 	has_one_attached :avatar
 	has_many :posts
+	has_many :likes
 	
 	validates_presence_of :email, :username, :avatar
 	validates_uniqueness_of :email, :username
